@@ -1,0 +1,5 @@
+D:\US\Downloads\2. PROYECTOS\Proyecto_Final\FaceRecProOV\obj\x86\Debug\IA-PROYECTO.csprojAssemblyReference.cache
+D:\US\Downloads\2. PROYECTOS\Proyecto_Final\FaceRecProOV\obj\x86\Debug\MultiFaceRec.FrmPrincipal.resources
+D:\US\Downloads\2. PROYECTOS\Proyecto_Final\FaceRecProOV\obj\x86\Debug\IA_PROYECTO.Properties.Resources.resources
+D:\US\Downloads\2. PROYECTOS\Proyecto_Final\FaceRecProOV\obj\x86\Debug\IA-PROYECTO.csproj.GenerateResource.cache
+D:\US\Downloads\2. PROYECTOS\Proyecto_Final\FaceRecProOV\obj\x86\Debug\IA-PROYECTO.csproj.CoreCompileInputs.cache

@@ -34,6 +34,11 @@ namespace MultiFaceRec
         string link,adjuntar = null;
         List<string> adjunto = new List<string>();
 
+        private void lblfecha_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public FrmPrincipal()
         {
             InitializeComponent();
@@ -67,7 +72,7 @@ namespace MultiFaceRec
             catch(Exception e)
             {
              
-                MessageBox.Show("Nothing in binary database, please add at least a face(Simply train the prototype with the Add Face Button).", "Triained faces load", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Click priero en el boton 1).", "Cargando los rostros", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
         }
@@ -79,6 +84,7 @@ private void timer_trick(object sender, EventArgs e)
             lblsec.Text = DateTime.Now.ToString("ss");
             lblfecha.Text = DateTime.Now.ToString("MMM dd yyyy");
             lblsec.Location = new Point(lblTime.Location.X + lblTime.Width - 5,lblsec.Location.Y);
+            
         }
 
       
@@ -129,8 +135,7 @@ private void timer_trick(object sender, EventArgs e)
                 TrainedFace = result.Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
                 trainingImages.Add(TrainedFace);
                 labels.Add(textBox1.Text);
-                fecha.Add(textBox2.Text);
-                links.Add(textBox3.Text);
+   
 
                 //mostrar el rostro que se agrego
                 imageBox1.Image = TrainedFace;
@@ -149,11 +154,11 @@ private void timer_trick(object sender, EventArgs e)
                     File.AppendAllText(Application.StartupPath + "/TrainedFaces/FacebookLabels.txt", links.ToArray()[i - 1] + "%");
                 }
 
-                MessageBox.Show(textBox1.Text + "´s face detected and added :)", "Training OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(textBox1.Text + "Cara agregada   )", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch
             {
-                MessageBox.Show("Enable the face detection first", "Training Fail", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Detecte la cara primero ", "Intento erroneo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -238,15 +243,14 @@ private void timer_trick(object sender, EventArgs e)
                         //Names concatenation of persons recognized
                     for (int nnn = 0; nnn < facesDetected[0].Length; nnn++)
                     {
-                        names = names + NamePersons[nnn] + ", ";
+                        names = names + NamePersons[nnn] ;
                 adjuntar = adjuntar + adjunto[nnn];
                 genial = genial + Fecha[nnn];
                     }
                     //Show the faces procesed and recognized
                     imageBoxFrameGrabber.Image = currentFrame;
                     label4.Text = names;
-                    label6.Text = genial;
-                    linkLabel1.Text = adjuntar;
+                 
                     names = "";
                     adjuntar = "";
             genial = "";
@@ -254,11 +258,18 @@ private void timer_trick(object sender, EventArgs e)
                     NamePersons.Clear();
             adjunto.Clear();
             Fecha.Clear();
+            if (label4.Text!="")
+            {
+                
+                DateTime t2 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 1, 0, 0);
+                if (DateTime.Compare(DateTime.Now,t2)>0) {
+                    File.AppendAllText(Application.StartupPath + "/TrainedFaces/Personasretardo.txt", label4.Text + "%");
+                    System.Threading.Thread.Sleep(5000);
                 }
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
+                
+            }
+                }
+       
 
 
 
